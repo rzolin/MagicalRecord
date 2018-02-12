@@ -278,13 +278,13 @@ static id MagicalRecordUbiquitySetupNotificationObserver;
     MagicalRecordDefaultContext = moc;
     [MagicalRecordDefaultContext MR_setWorkingName:@"MagicalRecord Default Context"];
 
-    if ((MagicalRecordDefaultContext != nil) && ([self MR_rootSavingContext] != nil)) {
+/*    if ((MagicalRecordDefaultContext != nil) && ([self MR_rootSavingContext] != nil)) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(rootContextDidSave:)
                                                      name:NSManagedObjectContextDidSaveNotification
                                                    object:[self MR_rootSavingContext]];
     }
-
+*/
     [moc MR_obtainPermanentIDsBeforeSaving];
     if ([MagicalRecord isICloudEnabled])
     {
@@ -311,7 +311,7 @@ static id MagicalRecordUbiquitySetupNotificationObserver;
     }
 
     MagicalRecordRootSavingContext = context;
-    
+
     [MagicalRecordRootSavingContext performBlock:^{
         [MagicalRecordRootSavingContext MR_obtainPermanentIDsBeforeSaving];
         [MagicalRecordRootSavingContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
